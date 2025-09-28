@@ -50,3 +50,4 @@ if __name__ == "__main__":
     print("Generated Code Preview:\n")
     print(code_text[:500])  # preview first 500 chars
 
+
