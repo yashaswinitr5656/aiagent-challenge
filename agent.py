@@ -3,7 +3,16 @@ import os
 import google.generativeai as genai
 
 # Configure Gemini API
-genai.configure(api_key="AIzaSyDkWl5c4regaWj_Wm6TP0THNPXl9X61uww")
+import os
+import google.generativeai as genai
+from dotenv import load_dotenv
+
+load_dotenv()  # load variables from .env file
+api_key = os.getenv("GENAI_API_KEY")
+if not api_key:
+    raise RuntimeError("GENAI_API_KEY not set in .env file")
+genai.configure(api_key=api_key)
+
 
 def call_llm(prompt: str) -> str:
     # Choose a supported model
@@ -40,3 +49,4 @@ if __name__ == "__main__":
     print(f"Parser saved to {parser_file}")
     print("Generated Code Preview:\n")
     print(code_text[:500])  # preview first 500 chars
+
